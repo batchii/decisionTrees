@@ -1,0 +1,40 @@
+This tree will look something like this:
+
+Tree has root node, and child nodes
+Each node will have a decision variable associated with it and a 
+decision outcome associated with it.
+
+Variable length encoding:
+  Crossover 
+    Select one node from each tree and swap the nodes
+  Mutation
+    Type 1:
+      Randomly change the decision variable assigned to a node. 
+      New decision variable has the same number of outcomes as the old
+    Type 2:
+      Randomly add or delete a node
+      Add a node at the leaves
+      Delete a node and the entire subtree. Restrict to nodes close to the
+      leaf in order to avoid huge deletions
+
+    Things that matter:
+      Fitness Function
+        -Use precision? Recall? Combination?
+        -Evaluate on a sub-set
+      Population size (number of trees) 10-1000
+      Selection Strategy
+        -Best way to select for reproduction?
+        -Fitness Proportionate
+      Mutation/Crossover probability 
+        -
+This is how mine will work
+ - Encoding: Node based structure 
+      -1 attribute assigned
+      - Leaf do not have attributes but have a classification
+  Crossover: random node in a parent tree is chosen and swapped with a
+  random node in another tree
+
+  Mutation: Node is either deleted or inserted 
+   - If a node is inserted, random leaf node is chosen.  
+  - Remove classification, random attribute assigned
+  measure based on accuracy

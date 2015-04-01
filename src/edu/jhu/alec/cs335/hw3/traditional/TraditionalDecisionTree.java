@@ -36,14 +36,15 @@ public class TraditionalDecisionTree extends DecisionTree {
 		int attr = -1;
 		// Find the column with the best gain to create a tree from
 		for (int i : attributes) {
-			double gain = fitness(i, parser, classcol, originalTrainingSet);
+			double gain = fitness(i, parser, classcol, originalTrainingSet, n);
 			if (gain > max) {
 				max = gain;
 				attr = i;
 			}
 		}
+		System.out.println("Attr: " + attr + " and max: " + max);
 		n.setNodeName(attr);
-		Set<String> values = parser.getUniqueValues(attr);
+		Set<String> values = originalTrainingSet.getUniqueValues(attr);
 
 		ArrayList<Integer> childAttributes = new ArrayList<Integer>(attributes);
 		childAttributes.remove(new Integer(attr));
@@ -71,9 +72,12 @@ public class TraditionalDecisionTree extends DecisionTree {
 
 	}
 
+
+
 	protected double fitness(int i, Parser parser, int classcol2,
-			Parser originalTrainingSet) {
-		return 0.0;
+			Parser originalTrainingSet, Node n) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

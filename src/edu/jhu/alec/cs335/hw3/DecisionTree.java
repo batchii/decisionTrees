@@ -66,8 +66,7 @@ public abstract class DecisionTree {
 	public String decideCol(String[] row) {
 		Node current = this.root;
 		while (current.getClassType() == null) {
-			System.out.println(row[current.getNodeName()]);
-			System.out.println(current.getAllClassifications().toString());
+
 			current = current.getClassification(row[current.getNodeName()]);
 
 		}

@@ -17,11 +17,11 @@ public class GeneticTree extends DecisionTree {
 
 	private Random rand;
 
-	final int NUM_TREES = 100;
+	final int NUM_TREES = 200;
 
-	final int SELECTION_SIZE = 20;
+	final int SELECTION_SIZE = 40;
 
-	final double MUTATION_RATE = .01;
+	final double MUTATION_RATE = .05;
 
 	final double CROSSOVER_RATE = .80;
 
@@ -36,12 +36,12 @@ public class GeneticTree extends DecisionTree {
 	// Create trees
 	// Choose good trees
 	// Redo as many times
-	public void learn(Parser parser, int classCol) {
+	public void learn(Parser parser, int classCol, ArrayList<Integer> toIgnore) {
 		this.parser = parser;
 		this.classCol = classCol;
 		// Need an array of trees
 		ArrayList<Node> trees = makeRandomTrees(this.parser, this.classCol,
-				this.NUM_TREES);
+				this.NUM_TREES, toIgnore);
 
 		ArrayList<Double> pastTestFitnesses = new ArrayList<Double>();
 
@@ -71,7 +71,7 @@ public class GeneticTree extends DecisionTree {
 				// Mutate
 				if (rand.nextDouble() < MUTATION_RATE) {
 					// do stuff
-					mutate(temp, this.parser, classCol);
+					mutate(temp, this.parser, classCol, toIgnore);
 					changed = true;
 				}
 				// Crossover
@@ -109,12 +109,13 @@ public class GeneticTree extends DecisionTree {
 	// Specify number of trees
 	// Which column is the classifier
 	// Return a list of random trees
-	private ArrayList<Node> makeRandomTrees(Parser parser, int classCol, int n) {
+	private ArrayList<Node> makeRandomTrees(Parser parser, int classCol, int n,
+			ArrayList<Integer> toIgnore) {
 		String[] classes = parser.getUniqueValues(classCol).toArray(
 				new String[0]);
 		ArrayList<Node> trees = new ArrayList<Node>(n);
-		ArrayList<Integer> treeAttributes = parser
-				.getAttributeColumns(classCol); // Get non class columns
+		ArrayList<Integer> treeAttributes = parser.getAttributeColumns(
+				classCol, toIgnore);
 		LinkedList<Node> queue = new LinkedList<Node>();
 		// Make some random trees bby
 		for (int ii = 0; ii < n; ii++) {
@@ -128,9 +129,10 @@ public class GeneticTree extends DecisionTree {
 				Node temp = queue.remove();
 				// Pick an attribute for the next level
 				// Make sure attribute has not been picked and is not the
-				// classCol
+				// classCol or a column to ignore
 				int attribute = treeAttributes.get(rand.nextInt(treeAttributes
 						.size()));
+
 				temp.setNodeName(attribute);
 				Set<String> values = parser.getUniqueValues(attribute);
 				for (String i : values) {
@@ -145,8 +147,6 @@ public class GeneticTree extends DecisionTree {
 						child.setClassType(classes[rand.nextInt(classes.length)]);
 					}
 				}
-				System.out.println("Number of children " + temp.getAllClassifications().size());
-				System.out.println("Should have: " + values.size());
 			}
 
 		}
@@ -221,7 +221,7 @@ public class GeneticTree extends DecisionTree {
 	}
 
 	// Mutate
-	private void mutate(Node tree1, Parser p, int classCol) {
+	private void mutate(Node tree1, Parser p, int classCol, ArrayList<Integer> toIgnore) {
 		ArrayList<String> path = getRandomPath(tree1);
 		Node current = tree1;
 		Parser parser = p;
@@ -235,39 +235,38 @@ public class GeneticTree extends DecisionTree {
 					// set filtered to parser
 					parser = filtered;
 				}
-				current = current.getClassification(path.get(i)); 
+				current = current.getClassification(path.get(i));
 			}
 			// reset the decision made by the node
 			current.setClassType(null);
-			//Pick a new identity for the node
+			// Pick a new identity for the node
 			int newAttr = rand.nextInt(p.numCols());
-			//Make sure it's not the class col
-			while(newAttr == classCol){
+			// Make sure it's not the class col
+			while (newAttr == classCol || toIgnore.contains(newAttr)) {
 				newAttr = rand.nextInt(p.numCols());
 			}
-			//Create leaves
+			// Create leaves
 			current.setNodeName(newAttr);
 			Set<String> values = p.getUniqueValues(newAttr);
-			for(String v : values){
+			for (String v : values) {
 				filtered = p.filter(newAttr, v);
 				Node leaf = new Node();
-				if(filtered.numRows() != 0){ 
-					//"Democrat/Republican", which has more?
+				if (filtered.numRows() != 0) {
+					// "Democrat/Republican", which has more?
 					leaf.setClassType(filtered.mostCommonValue(classCol));
 				} else {
-					//"If nothing exists it must be the other one
+					// "If nothing exists it must be the other one
 					leaf.setClassType(p.mostCommonValue(classCol));
 				}
 				current.setClassification(v, leaf);
-			
-				
+
 			}
 		} else { // Delete
 			int depth = rand.nextInt(path.size());
-			
-			for(int ii = 0; ii <= depth; ii++){
+
+			for (int ii = 0; ii <= depth; ii++) {
 				filtered = parser.filter(tree1.getNodeName(), path.get(ii));
-				if(filtered.numRows() != 0){
+				if (filtered.numRows() != 0) {
 					parser = filtered;
 				}
 				tree1 = tree1.getClassification(path.get(ii));

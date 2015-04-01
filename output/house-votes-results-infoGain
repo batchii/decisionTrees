@@ -1,0 +1,12 @@
+make: Entering directory '/home/atab70782/workspace/hw3/src'
+java -cp ../bin edu.jhu.alec.cs335.hw3.Decisions ../data/house-votes/house-votes-84.dataaa ../data/house-votes/house-votes-84.dataab
+Please enter the column index with the class
+Please enter the type of tree you would like. (1 = Information Gain Tree, 2 = Gain Ratio Tree, 3 = Evolutionary Tree
+Confusion Matrix: 
+     democrat    republican    
+democrat 97.0 6.0 
+republican 8.0 62.0 
+Precision is: 0.941747572815534 
+Recall is: 0.9238095238095239
+Accuracy is: 0.9190751445086706
+make: Leaving directory '/home/atab70782/workspace/hw3/src'

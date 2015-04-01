@@ -17,11 +17,11 @@ public class TraditionalDecisionTree extends DecisionTree {
 		super();
 	}
 
-	public void learn(Parser trainingSet, int classCol) {
+	public void learn(Parser trainingSet, int classCol, ArrayList<Integer> toIgnore) {
 		// Take out the classColumn before building the set
 		ArrayList<Integer> allAttributes = new ArrayList<Integer>();
 		for (int ii = 0; ii < trainingSet.numCols(); ii++) {
-			if (ii != classCol) {
+			if (ii != classCol && !toIgnore.contains(ii)) {
 				allAttributes.add(ii);
 			}
 		}
@@ -42,7 +42,6 @@ public class TraditionalDecisionTree extends DecisionTree {
 				attr = i;
 			}
 		}
-		System.out.println("Attr: " + attr + " and max: " + max);
 		n.setNodeName(attr);
 		Set<String> values = originalTrainingSet.getUniqueValues(attr);
 
@@ -76,7 +75,6 @@ public class TraditionalDecisionTree extends DecisionTree {
 
 	protected double fitness(int i, Parser parser, int classcol2,
 			Parser originalTrainingSet, Node n) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

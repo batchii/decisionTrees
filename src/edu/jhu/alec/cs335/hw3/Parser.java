@@ -41,6 +41,10 @@ public class Parser {
 		String line = in.nextLine();
 		while (in.hasNext()) {
 			line = in.nextLine();
+			//For Monk data there is a space at the beginning of each line
+			if(line.charAt(0) == ' '){
+				line = line.substring(1, line.length());
+			}
 			if (line.split(",").length > 1)
 				this.data.add(line.split(",")); 
 			else {
@@ -189,12 +193,13 @@ public class Parser {
 	/**
 	 * Get the ids of the attributes
 	 * @param classCol class column
+	 * @param toIgnore 
 	 * @return ids of the attributes
 	 */
-	public ArrayList<Integer> getAttributeColumns(int classCol){
+	public ArrayList<Integer> getAttributeColumns(int classCol, ArrayList<Integer> toIgnore){
 		ArrayList<Integer> idCols = new ArrayList<Integer>();
 		for(int ii = 0; ii<data.get(0).length; ii++){
-			if(ii != classCol){
+			if(ii != classCol && !toIgnore.contains(ii)){
 				idCols.add(ii);
 			}
 		}

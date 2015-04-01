@@ -12,7 +12,7 @@ public abstract class DecisionTree {
 		root = new Node();
 	}
 
-	public void learn(Parser parser, int classCol) {
+	public void learn(Parser parser, int classCol, ArrayList<Integer> toIgnore) {
 
 	}
 
@@ -23,6 +23,7 @@ public abstract class DecisionTree {
 		// generate confusion matrix
 		Map<String, Integer> valueCounts = testSet
 				.countValueOccurrences(classCol);
+
 		// guessed class is row, actual is col
 		double[][] confusionMatrix = new double[valueCounts.size()][valueCounts
 				.size()];
@@ -66,9 +67,8 @@ public abstract class DecisionTree {
 	public String decideCol(String[] row) {
 		Node current = this.root;
 		while (current.getClassType() == null) {
-
 			current = current.getClassification(row[current.getNodeName()]);
-
+			
 		}
 		return current.getClassType();
 	}

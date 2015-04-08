@@ -2,18 +2,21 @@ package edu.jhu.alec.cs335.hw3;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 
 import edu.jhu.alec.cs335.hw3.traditional.Node;
 
 public abstract class DecisionTree {
 	protected Node root;
+	
+	protected Map<String, Integer> classes;
 
 	public DecisionTree() {
 		root = new Node();
 	}
 
 	public void learn(Parser parser, int classCol, ArrayList<Integer> toIgnore) {
-
+		this.classes = parser.countValueOccurrences(classCol);
 	}
 
 	public void decide(Parser testSet, int classCol) {
@@ -23,7 +26,8 @@ public abstract class DecisionTree {
 		// generate confusion matrix
 		Map<String, Integer> valueCounts = testSet
 				.countValueOccurrences(classCol);
-
+		System.out.println(testSet.getCol(classCol)[0]);
+		System.out.println(valueCounts.size());
 		// guessed class is row, actual is col
 		double[][] confusionMatrix = new double[valueCounts.size()][valueCounts
 				.size()];
@@ -41,7 +45,7 @@ public abstract class DecisionTree {
 		}
 		System.out.println();
 		for (int i = 0; i < confusionMatrix.length; i++) {
-			System.out.print( keys.get(i) + " ");
+			System.out.print(keys.get(i) + " ");
 			for (int j = 0; j < confusionMatrix.length; j++) {
 				if (i == j) {
 					numCorrect += confusionMatrix[i][j];
@@ -66,10 +70,25 @@ public abstract class DecisionTree {
 	// Figures out the classification
 	public String decideCol(String[] row) {
 		Node current = this.root;
+		
 		while (current.getClassType() == null) {
-			current = current.getClassification(row[current.getNodeName()]);
+			if( current.getClassification(row[current.getNodeName()])== null){
+				Map.Entry<String, Integer> maxEntry = null;
+				for (Map.Entry<String, Integer> entry : classes.entrySet())
+				{
+				    if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
+				    {
+				        maxEntry = entry;
+				    }
+				}
+				return maxEntry.getKey();
+			} else {
+				current = current.getClassification(row[current.getNodeName()]);
+			}
+			
 			
 		}
+		
 		return current.getClassType();
 	}
 }

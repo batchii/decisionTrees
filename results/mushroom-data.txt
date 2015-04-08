@@ -1,0 +1,42 @@
+II. Mushroom Data (Performed with 75 / 25 split)
+  1. Information Gain Tree
+    Trial:
+      a) Precision: .9241
+         Recall: .9708
+         Accuracy: .9192
+      
+      b) Precision: 1.0
+         Recall: 1.0
+         Accuracy: 1.0
+
+      c) Precision: 1.0
+         Recall: 1.0
+         Accuracy: 1.0
+  
+  2. Gain Ratio Tree
+    Trial:
+      a) Precision: .9946
+         Recall: .9708
+         Accuracy: .9744
+      
+      b) Precision: 1.0
+         Recall: 1.0
+         Accuracy: 1.0
+      
+      c) Precision: 1.0
+         Recall: 1.0
+         Accuracy: 1.0
+
+  3. Genetic Tree
+    Trial:
+      a) Precision: .9389
+         Recall: .9708
+         Accuracy: .9315
+      
+      b) Precision: 1.0
+         Recall: .9770
+         Accuracy: .9887
+      
+      c) Precision: 1.0
+         Recall: .9634
+         Accuracy: .9823

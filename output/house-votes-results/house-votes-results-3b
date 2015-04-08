@@ -1,0 +1,5 @@
+make: Entering directory '/home/atab70782/workspace/hw3/src'
+java -cp ../bin edu.jhu.alec.cs335.hw3.Decisions ../data/house-votes/house-votes-84aa ../data/house-votes/house-votes-84ab
+Please enter the column index with the class
+Makefile:57: recipe for target 'run' failed
+make: Leaving directory '/home/atab70782/workspace/hw3/src'

@@ -37,6 +37,7 @@ public class GeneticTree extends DecisionTree {
 	// Choose good trees
 	// Redo as many times
 	public void learn(Parser parser, int classCol, ArrayList<Integer> toIgnore) {
+		super.learn(parser, classCol, toIgnore);
 		this.parser = parser;
 		this.classCol = classCol;
 		// Need an array of trees

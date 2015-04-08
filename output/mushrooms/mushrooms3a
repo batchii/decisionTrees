@@ -1,0 +1,17 @@
+make: Entering directory '/home/atab70782/workspace/hw3/src'
+java -cp ../bin edu.jhu.alec.cs335.hw3.Decisions ../data/mushrooms/agaricus-lepiota.dataaa ../data/mushrooms/agaricus-lepiota.dataab
+Please enter the column index with the class
+Please enter the type of tree you would like. (1 = Information Gain Tree, 2 = Gain Ratio Tree, 3 = Evolutionary Tree
+Please enter any columns to ignore (-1 when finished)
+Made tree in: 20373ms
+p
+2
+Confusion Matrix: 
+     p    e    
+p 1461.0 95.0 
+e 44.0 430.0 
+Precision is: 0.9389460154241646 
+Recall is: 0.9707641196013289
+Accuracy is: 0.9315270935960591
+Made all decisions in: 5ms
+make: Leaving directory '/home/atab70782/workspace/hw3/src'

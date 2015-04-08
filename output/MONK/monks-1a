@@ -1,0 +1,18 @@
+make: Entering directory '/home/atab70782/workspace/hw3/src'
+java -cp ../bin edu.jhu.alec.cs335.hw3.Decisions ../data/MONK/monks-1.train ../data/MONK/monks-1.test
+Please enter the column index with the class
+Please enter the type of tree you would like. (1 = Information Gain Tree, 2 = Gain Ratio Tree, 3 = Evolutionary Tree
+Please enter any columns to ignore (-1 when finished)
+Please enter any columns to ignore (-1 when finished)
+Made tree in: 14ms
+1
+2
+Confusion Matrix: 
+     0    1    
+0 192.0 8.0 
+1 24.0 207.0 
+Precision is: 0.96 
+Recall is: 0.8888888888888888
+Accuracy is: 0.925754060324826
+Made all decisions in: 3ms
+make: Leaving directory '/home/atab70782/workspace/hw3/src'

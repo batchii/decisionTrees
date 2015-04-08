@@ -62,13 +62,18 @@ public class Decisions {
 			tree = new GeneticTree();
 			break;
 		}
+
+		
 		trainParser.download();
+
 		long startTime = System.currentTimeMillis();
 		tree.learn(trainParser, classCol, columnsToIgnore);
 		long time = System.currentTimeMillis() - startTime;
 		System.out.println("Made tree in: " + time + "ms");
 		
 		setParser.download();
+
+		
 		startTime = System.currentTimeMillis();
 		tree.decide(setParser, classCol);
 		time = System.currentTimeMillis() - startTime;

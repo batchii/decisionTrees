@@ -1,0 +1,7 @@
+make: Entering directory '/home/atab70782/workspace/hw3/src'
+java -cp ../bin edu.jhu.alec.cs335.hw3.Decisions data/house-votes/house-votes-84aa data/house-votes/house-votes-84ab
+Please enter the column index with the class
+Please enter the type of tree you would like. (1 = Information Gain Tree, 2 = Gain Ratio Tree, 3 = Evolutionary Tree
+Please enter any columns to ignore (-1 when finished)
+Makefile:57: recipe for target 'run' failed
+make: Leaving directory '/home/atab70782/workspace/hw3/src'

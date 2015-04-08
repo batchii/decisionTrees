@@ -54,7 +54,10 @@ edu.jhu.alec.cs335.hw3
   - Parser.java => used to read in files
 edu.jhu.alec.cs335.hw3.traditional
   - GainRatioTree.java => Gain Ratio implementation
-  - InfoGain
+  - InfoGain.java => Info Gain Implementation
+  - Node.java => Node of a tree
+  - TraditionalDecisionTree.java => Base class for traditional trees
+
 
 
 

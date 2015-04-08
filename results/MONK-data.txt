@@ -1,0 +1,48 @@
+III. MONK Results
+Test 1:
+  1. Information Gain Trees
+    a) Precision: .96
+       Recall: .8888
+       Accuracy: .9258
+
+  2. Gain Ratio Trees
+    a) Precision: .9592
+       Recall: .8704
+       Accuracy: .9165
+
+  3. Genetic Tree
+    a) Precision: .8462
+       Recall: .9167
+       Accuracy: .8747
+Test 2:
+  1. Information Gain Tree
+    a) Precision: .7636
+       Recall: .7266
+       Accuracy: .6659
+
+  2. Gain Ratio Trees
+    a) Precision: .7692
+       Recall: .6920
+       Accuracy: .6543
+
+  3. Genetic Tree
+    a) Precision: .7374
+       Recall: .7093
+       Accuracy: .6357
+
+Test 3:
+  1. Information Gain Tree
+    a) Precision: .9090
+       Recall: .9804
+       Accuracy: .94432
+  
+  2. Gain Ratio Tree
+    a) Precision: .9090
+       Recall: .9804
+       Accuracy: .94432
+
+  3. Genetic Tree
+    a) Precision: .9444
+       Recall: 1
+       Accuracy: .9722
+

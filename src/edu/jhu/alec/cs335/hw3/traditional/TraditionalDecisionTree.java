@@ -19,6 +19,7 @@ public class TraditionalDecisionTree extends DecisionTree {
 
 	public void learn(Parser trainingSet, int classCol, ArrayList<Integer> toIgnore) {
 		// Take out the classColumn before building the set
+		super.learn(trainingSet, classCol, toIgnore);
 		ArrayList<Integer> allAttributes = new ArrayList<Integer>();
 		for (int ii = 0; ii < trainingSet.numCols(); ii++) {
 			if (ii != classCol && !toIgnore.contains(ii)) {

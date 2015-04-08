@@ -7,9 +7,7 @@ import java.util.Set;
 public class Node {
 
 	private int attr_col;
-
-	private String[] attributesArray;
-
+	
 	private String classType;
 
 	private HashMap<String, Node> classifications;
@@ -38,14 +36,6 @@ public class Node {
 
 	public void setNodeName(int nodeName) {
 		this.attr_col = nodeName;
-	}
-
-	public String[] getAttributesArray() {
-		return attributesArray;
-	}
-
-	public void setAttributesArray(String[] attributesArray) {
-		this.attributesArray = attributesArray;
 	}
 
 	public String getClassType() {

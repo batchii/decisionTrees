@@ -1,0 +1,46 @@
+I. House Votes Data
+  1. Information Gain Tree
+    Trial:
+      a) Precision: .9417
+         Recall: .9238
+         Accuracy: .9191
+      b) Precision: .9386
+         Recall: .9386
+         Accuracy: .9191
+      c) Precision: .9396
+         Recall: .9386
+         Accuracy: .9191
+    Average:
+      Precision: .9400
+      Recall: .9337
+      Accuracy: .9191
+  2. Gain Ratio Tree
+    Trial:
+      a) Precision: .9352
+         Recall: .9619
+         Accuracy: .9364
+      b) Precision: .9483
+         Recall: .9649
+         Accuracy: .9422
+      c) Precision: .9483
+         Recall: .9649
+         Accuracy: .9422
+    Average:
+      Precision: .9439
+      Recall: .9639
+      Accuracy: .9403
+  3. Genetic Ratio Tree
+    Trial:
+      a) Precision: .9796
+         Recall: .9143
+         Accuracy: .9364
+      b) Precision: .9818
+         Recall: .9474
+         Accuracy: .9548
+      c) Precision: .9817
+         Recall: .9386
+         Accuracy: .9480
+    Average:
+      Precision: .9810
+      Recall: .9334
+      Accuracy: .9464
